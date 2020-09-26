@@ -12,7 +12,7 @@ dscp servergroup command
 Copy this one-liner and run it in your shell
 
 ```
-DSCP='/usr/local/bin/dscp' && curl -o $DSCP https://raw.githubusercontent.com/muhas/dscp/master/bin/dscp && chmod +x $DSCP && unset DSCP
+DSCP='/usr/local/bin/dscp' && curl -o $DSCP https://raw.githubusercontent.com/muhas/dscp/master/dscp && chmod +x $DSCP && unset DSCP
 ```
 Note: Use sudo or replace /usr/local/bin/dscp to path somewhere inside your home directory.
 
