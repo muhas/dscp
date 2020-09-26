@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+
+FILE="${HOME}/.dsh/group/"
+usage() {
+	echo "${bold}Usage:${reset}"
+	echo " ${bold}dscp${reset} ${orange}group${reset} command"
+	echo " ${bold}dscp${reset} ${orange}group cp${reset} from to"
+	echo " use ${orange}dsh${reset} group files"
+	exit;
+}
+if [ -x /usr/bin/tput ] && tput setaf 1 &> /dev/null; then
+	bold=$(tput bold)
+	reset=$(tput sgr0)
+	green=$(tput setaf 64)
+	orange=$(tput setaf 166)
+else
+  bold="\e[1m" 
+  reset="\e[0m"
+  green="\e[1;32m"
+  orange="\e[1;33m"
+fi
+if [ "$1" = "" ];then
+	usage;
+else 
+	FILE=${FILE}${1};
+fi
+if [ -e $FILE ];then
+	echo "${green}use ${bold}${1}${reset}${green} group${reset}"
+else
+  echo "${bold}${red}group ${1} not faund${reset}"
+	usage;
+fi
+
+shift
+for i in `cat ${FILE}`;do
+	if [ "$1" == "cp" ]; then
+		echo "scp $2 ${orange}$i${reset}:$3"
+		scp $2 $i:$3
+	else
+		echo ssh ${orange}$i${reset} "$@"
+		ssh $i "$@"
+	fi
+done
+
+
+unset i;
