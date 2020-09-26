@@ -27,7 +27,7 @@ fi
 if [ -e $FILE ];then
 	echo "${green}use ${bold}${1}${reset}${green} group${reset}"
 else
-  echo "${bold}${red}group ${1} not faund${reset}"
+  echo "${bold}${red}group ${1} not found${reset}"
 	usage;
 fi
 
