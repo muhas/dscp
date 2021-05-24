@@ -33,7 +33,7 @@ fi
 
 shift
 for i in `cat ${FILE}`;do
-	if [ "$1" == "cp" ]; then
+	if [ "$1" = "cp" ]; then
 		echo "scp $2 ${orange}$i${reset}:$3"
 		scp $2 $i:$3
 	else
